@@ -1,20 +1,24 @@
 import './App.css';
-import Container from 'react-bootstrap/Container';
+import Home from './components/pages/home';
+import Products from './components/pages/products';
+import Login from './components/pages/login';
 import NavScrollExample from './components/navbar';
-import UncontrolledExample from './components/carrousel';
-import ProductsGroup from './components/products';
-import Footer from './components/footer';
-function App() {
-  
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
-  
+function App() {  
   return (
-    <Container fluid>
+    <Router>
       <NavScrollExample/>
-      <UncontrolledExample/>
-      <ProductsGroup/>
-      <Footer/>
-    </Container>
+      <Routes>
+        <Route path='/' exact element={<Home/>}/>
+        <Route path='/products' exact element={<Products/>}/>
+        <Route path='/login' exact element={<Login/>}/>
+      </Routes>
+    </Router>
   );
   
 }

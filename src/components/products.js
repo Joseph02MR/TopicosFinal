@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 
 function ProductsGroup() {
     return (
-
       <Container fluid>
         <Row xs={1} sm={2} md={3} lg={4} className="g-2">
           {Array.from({ length: 24 }).map((_, idx) => (

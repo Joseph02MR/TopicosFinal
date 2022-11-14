@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo_store.png";
-
+import { Link } from "react-router-dom";
 function NavScrollExample() {
   return (
     <Navbar bg="light" expand="md">
@@ -19,8 +19,8 @@ function NavScrollExample() {
             style={{ maxHeight: "250px" }}
             navbarScroll
           >
-            <Nav.Link  href="#action1">Home</Nav.Link>
-            <Nav.Link  href="#action2">Products</Nav.Link>
+            <Link  to="/">Home</Link>
+            <Link  to='/products'>Products</Link>
             <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Electronics</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
