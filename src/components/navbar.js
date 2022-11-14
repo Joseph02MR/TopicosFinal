@@ -5,12 +5,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo_store.png";
-
+import Link from "react-router-dom";
 function NavScrollExample() {
   return (
+    <Router>
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#"><img style={{ height:"4rem" }} alt="logo-LeJose" src={logo}/></Navbar.Brand>
+        <Link to='/'><img style={{ height:"4rem" }} alt="logo-LeJose" src={logo}/></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -18,18 +19,19 @@ function NavScrollExample() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Products</Nav.Link>
+            <Link to='/'>Home</Link>
+            <Link to='/products'>Products</Link>
             <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Electronics</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav.Link href="cart"><box-icon type='solid' name='cart'></box-icon>Carrito</Nav.Link>
-          <Nav.Link href="login.js"><box-icon name='log-in' animation='tada-hover'></box-icon>Login</Nav.Link>
+          <Link to="/cart"><box-icon type='solid' name='cart'></box-icon>Carrito</Link>
+          <Link to="/login"><box-icon name='log-in' animation='tada-hover'></box-icon>Login</Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </Router>
   );
 }
 

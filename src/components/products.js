@@ -2,7 +2,6 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-
 function ProductsGroup() {
     return (
         <Row xs={1} md={3} className="g-2">
