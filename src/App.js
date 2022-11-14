@@ -1,18 +1,22 @@
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import NavScrollExample from './components/navbar';
-import DarkVariantExample from './components/carrousel';
+import UncontrolledExample from './components/carrousel';
 import ProductsGroup from './components/products';
+import Footer from './components/footer';
 function App() {
+  
+
+  
   return (
     <Container fluid>
-    <div className="App">
       <NavScrollExample/>
-      <DarkVariantExample/>
+      <UncontrolledExample/>
       <ProductsGroup/>
-    </div>
+      <Footer/>
     </Container>
   );
+  
 }
 
 export default App;

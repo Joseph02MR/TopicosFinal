@@ -1,21 +1,46 @@
+import { Row } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 
-function DarkVariantExample() {
+function UncontrolledExample() {
   return (
-    <Carousel variant="dark">
+    <Row >
+    <Carousel>
+      
       <Carousel.Item>
         <img
-          className="d-block w-20 h-20"
-          src="https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+          className="d-block w-100"
+          src="https://www.claroshop.com/c/iphone-14/img/Mob/IphoneMob.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://www.claroshop.com/c/iphone-14/img/Mob/IphoneMob.jpg"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+          
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://www.claroshop.com/c/iphone-14/img/Mob/IphoneMob.jpg"
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </Row>
   );
 }
 
-export default DarkVariantExample;
+export default UncontrolledExample;
