@@ -5,7 +5,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo_store.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { padding } from "@mui/system";
 function NavScrollExample() {
   return (
     <Navbar bg="light" expand="md">
@@ -19,11 +20,11 @@ function NavScrollExample() {
             style={{ maxHeight: "250px" }}
             navbarScroll
           >
-            <Link  to="/">Home</Link>
-            <Link  to='/products'>Products</Link>
-            <NavDropdown title="Categories" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Electronics</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
+            <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
+              <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">Electronics</NavDropdown.Item>
+              <NavDropdown.Item style={{ textAlign:"center" }} href="#action4">Another action</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav.Link style={{ margin: 15 }} href="cart"><box-icon  type='solid' name='cart'></box-icon></Nav.Link>
