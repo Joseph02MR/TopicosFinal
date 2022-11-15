@@ -10,9 +10,13 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { Dataprovider } from './context/DataProvider';
 
 function App() {  
   return (
+    <Dataprovider>
+
+    
     <Router>
       <NavScrollExample/>
       <Routes>
@@ -23,6 +27,7 @@ function App() {
       </Routes>
       <Footer/>
     </Router>
+    </Dataprovider>
   );
   
 }
