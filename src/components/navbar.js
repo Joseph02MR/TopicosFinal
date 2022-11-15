@@ -5,28 +5,30 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo_store.png";
-
+import { Link, NavLink } from "react-router-dom";
+import { padding } from "@mui/system";
 function NavScrollExample() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="md">
       <Container fluid>
-        <Navbar.Brand href="#"><img style={{ height:"4rem" }} alt="logo-LeJose" src={logo}/></Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Brand href="#"><img style={{ height:"70px" }} alt="logo-LeJose" src={logo}/></Navbar.Brand>
+        <Navbar.Toggle aria-controls=""  style={{  marginRight: 20 }}/>
+        <Navbar.Collapse id="navbarScroll" style={{ textAlign:'center', paddingRight: 10 }} >
           <Nav
+            
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
+            style={{ maxHeight: "250px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Products</Nav.Link>
-            <NavDropdown title="Categories" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Electronics</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
+            <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
+              <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">Electronics</NavDropdown.Item>
+              <NavDropdown.Item style={{ textAlign:"center" }} href="#action4">Another action</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav.Link href="cart"><box-icon type='solid' name='cart'></box-icon>Carrito</Nav.Link>
-          <Nav.Link href="login.js"><box-icon name='log-in' animation='tada-hover'></box-icon>Login</Nav.Link>
+          <NavLink to='/cart' style={{ margin: 15 }}><box-icon  type='solid' name='cart'></box-icon></NavLink>
+          <NavLink to='/login' style={{ margin: 15 }}><box-icon  name='log-in' animation='tada-hover'></box-icon></NavLink>
         </Navbar.Collapse>
       </Container>
     </Navbar>
