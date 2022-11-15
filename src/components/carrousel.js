@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 function UncontrolledExample() {
   return (
     <Row >
-    <Carousel>
+    <Carousel >
       
       <Carousel.Item>
         <img
