@@ -22,7 +22,6 @@ function ProductsGroup() {
                   </Card.Text>
                   <Button variant="primary">Buy Now!</Button>{' '}
                 </Card.Body></>
-
               </Card>
             </Col>
             ))}
