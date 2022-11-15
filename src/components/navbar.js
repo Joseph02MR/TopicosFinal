@@ -27,8 +27,8 @@ function NavScrollExample() {
               <NavDropdown.Item style={{ textAlign:"center" }} href="#action4">Another action</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav.Link style={{ margin: 15 }} href="cart"><box-icon  type='solid' name='cart'></box-icon></Nav.Link>
-          <Nav.Link style={{ margin: 15 }} href="login.js"><box-icon  name='log-in' animation='tada-hover'></box-icon></Nav.Link>
+          <NavLink to='/cart' style={{ margin: 15 }}><box-icon  type='solid' name='cart'></box-icon></NavLink>
+          <NavLink to='/login' style={{ margin: 15 }}><box-icon  name='log-in' animation='tada-hover'></box-icon></NavLink>
         </Navbar.Collapse>
       </Container>
     </Navbar>
