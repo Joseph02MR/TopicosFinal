@@ -28,10 +28,10 @@ background-size: cover;
     background: #e0dfdd;
   
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: -webkit-linear-gradient(to right, #c7c7c7, #838383, #2c2c2c, #3d3d3d);
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #4e4e4e, #adadad, #696969, #3d3d3d);
   }
   
   @media (min-width: 768px) {
