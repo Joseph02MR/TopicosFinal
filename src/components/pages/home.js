@@ -1,14 +1,15 @@
 import Container from 'react-bootstrap/Container';
 import UncontrolledExample from '../carrousel';
 import ProductsGroup from '../products';
-import Footer from '../footer';
+import ContentBlock from '../contentblock';
+
 
 function home(){
     return(
         <Container fluid>
             <UncontrolledExample/>
+            <ContentBlock/>
             <ProductsGroup/>
-            <Footer/>
         </Container>
     );
 }

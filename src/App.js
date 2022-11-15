@@ -3,6 +3,8 @@ import Home from './components/pages/home';
 import Products from './components/pages/products';
 import Login from './components/pages/login';
 import NavScrollExample from './components/navbar';
+import Footer from './components/footer';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,6 +20,7 @@ function App() {
         <Route path='/products' exact element={<Products/>}/>
         <Route path='/login' exact element={<Login/>}/>
       </Routes>
+      <Footer/>
     </Router>
   );
   
