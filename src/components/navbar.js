@@ -9,9 +9,9 @@ import { Link, NavLink } from "react-router-dom";
 import { padding } from "@mui/system";
 function NavScrollExample() {
   return (
-    <Navbar bg="light" expand="md">
+    <Navbar sticky="top" bg="light" expand="md">
       <Container fluid>
-        <Navbar.Brand href="#"><img style={{ height:"70px" }} alt="logo-LeJose" src={logo}/></Navbar.Brand>
+        <Navbar.Brand href="#"><NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end><img style={{ height:"70px" }} alt="logo-LeJose" src={logo}/></NavLink></Navbar.Brand>
         <Navbar.Toggle aria-controls=""  style={{  marginRight: 20 }}/>
         <Navbar.Collapse id="navbarScroll" style={{ textAlign:'center', paddingRight: 10 }} >
           <Nav
