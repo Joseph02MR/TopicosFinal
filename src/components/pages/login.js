@@ -26,6 +26,22 @@ class login extends Component {
     e.preventDefault();
     const{email,password}=this.state;
     console.log(email,password);
+    fetch('http://localhost:8000/api/v1/login',{
+        method:"POST",
+        crossDomain:true,
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+        },
+        body:JSON.stringify({
+            email,
+            password,
+        })
+    }).then((res)=>res.json())
+    .then((data)=>{
+        console.log("Login exitoso")
+    })
   }
   render() {
     return (
