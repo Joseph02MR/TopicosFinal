@@ -6,7 +6,7 @@ export  const Dataprovider = (props) =>{
     const[productos, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://192.168.3.6:8000/api/v1/products')
+        fetch('http://127.0.0.1:8000/api/v1/products')
            .then((response) => response.json())
            .then((data) => {
               //console.log(data);
