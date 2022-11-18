@@ -6,7 +6,7 @@ export  const Dataprovider = (props) =>{
     const[productos, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/v1/products')
+        fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/products')
            .then((response) => response.json())
            .then((data) => {
               //console.log(data);
