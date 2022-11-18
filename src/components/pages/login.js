@@ -16,6 +16,7 @@ import { Col, Container, Row } from "react-bootstrap";
 class login extends Component {
   constructor(props){
     super(props);
+    localStorage.clear();
     this.state={
         email:"",
         password:"",
@@ -41,6 +42,8 @@ class login extends Component {
     }).then((res)=>res.json())
     .then((data)=>{
         console.log("Login exitoso")
+        localStorage.setItem("SESSION",JSON.stringify(data));
+        window.location.href="/";
     })
   }
   render() {
