@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./components/pages/home";
 import Products from "./components/pages/products";
+import Accesories from "./components/pages/Accessories";
 import Login from "./components/pages/login";
 import NavScrollExample from "./components/navbar";
 import Footer from "./components/footer";
@@ -17,6 +18,7 @@ function App() {
           <Route path="/products" exact element={<Products />} />
           <Route path="/login" exact element={<Login/>}/>
           <Route path="/cart" exact element={<Cart />} />
+          <Route path="/products/Accessories" exact element={<Accesories />} />
         </Routes>
         <Footer />
       </Router>
