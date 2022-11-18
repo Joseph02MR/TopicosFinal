@@ -29,7 +29,7 @@ function NavScrollExample() {
             <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
             {categories.map((categorie)=>(
                <NavLink to='/products/CATEG_NAME' style={{ margin: 15 }}>
-                  <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.category}</NavDropdown.Item>
+                  <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.name}</NavDropdown.Item>
                 </NavLink>
             ))}
             </NavDropdown>
