@@ -7,7 +7,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo_store.png";
 import { Link, NavLink } from "react-router-dom";
 import { padding } from "@mui/system";
+import React, {useContext} from 'react';
+import { Datacontext } from '../context/DataProvider';
 function NavScrollExample() {
+  const value = useContext(Datacontext);
+  const[categories] = value.categories;
   return (
     <Navbar sticky="top" bg="light" expand="md">
       <Container fluid>
@@ -23,9 +27,9 @@ function NavScrollExample() {
             <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
             <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
             <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
-            {productos.map((product)=>(
+            {categories.map((categorie)=>(
                <NavLink to='/products/CATEG_NAME' style={{ margin: 15 }}>
-                  <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">Electronics</NavDropdown.Item>
+                  <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.category}</NavDropdown.Item>
                 </NavLink>
             ))}
             </NavDropdown>

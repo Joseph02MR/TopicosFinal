@@ -4,6 +4,7 @@ export const Datacontext = createContext();
 
 export  const Dataprovider = (props) =>{
     const[productos, setPosts] = useState([])
+    const[categories, setCats] = useState([])
 
     useEffect(() => {
         fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/products')
@@ -18,15 +19,8 @@ export  const Dataprovider = (props) =>{
 
     },[])
 
-    const value = {
-      productos : [productos]
-    }
-
-    const[categories, setCats] = useState([])
-
-
     useEffect(() => {
-      fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/categories')
+      fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/products/categoria')
          .then((response) => response.json())
          .then((data) => {
             //console.log(data);
@@ -38,16 +32,22 @@ export  const Dataprovider = (props) =>{
 
   },[])
 
-  const valuecat = {
-   categories : [categories]
- }
+    const value = {
+      productos : [productos],
+      categories : [categories]
+    }
+
+    
+
+
+    
+
+
 
     return (
-      <><Datacontext.Provider value={value}>
+      <Datacontext.Provider value={value}>
           {props.children}
-       </Datacontext.Provider><Datacontext.Provider valuecat={valuecat}>
-             {props.children}
-          </Datacontext.Provider></>
+       </Datacontext.Provider>
     )
 
  };
