@@ -5,6 +5,7 @@ import Login from "./components/pages/login";
 import NavScrollExample from "./components/navbar";
 import Footer from "./components/footer";
 import Cart from "./components/pages/cart";
+import Register from './components/pages/register';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Dataprovider } from "./context/DataProvider";
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/products" exact element={<Products />} />
           <Route path="/login" exact element={<Login/>}/>
           <Route path="/cart" exact element={<Cart />} />
+          <Route path='/register' exact element={<Register/>}/>
         </Routes>
         <Footer />
       </Router>
