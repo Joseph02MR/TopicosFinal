@@ -1,19 +1,19 @@
 
 import Container from 'react-bootstrap/Container';
-import SkincareGroup from '../skincare';
+import VehiclesGroup from '../vehicles';
 import { Dataprovider } from '../../context/DataProvider';
 
 
-function skincare() {
+function vehicles() {
    return (
       <Dataprovider>
          <Container fluid>
             <div className="App">
-               <SkincareGroup />
+               <VehiclesGroup />
             </div>
          </Container>
       </Dataprovider>
    );
 }
 
-export default skincare;
+export default vehicles;
