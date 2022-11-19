@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Datacontext } from '../context/DataProvider';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image'
+import Badge from 'react-bootstrap/Badge';
 function NavScrollExample() {
   const value = useContext(Datacontext);
   const[categories] = value.categories;
@@ -23,7 +24,6 @@ function NavScrollExample() {
   if(localStorage.getItem("SESSION")){
     const profile = JSON.parse(localStorage.getItem('SESSION'));
     return (
-      <Container>
         <Navbar sticky="top" bg="light" expand="md">
         <Container fluid>
           <Navbar.Brand href="#"><NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end><img style={{ height:"70px" }} alt="logo-LeJose" src={logo}/></NavLink></Navbar.Brand>
@@ -45,24 +45,17 @@ function NavScrollExample() {
               ))}
               </NavDropdown>
             </Nav>
-            <NavLink to='/profile' style={{ margin: 15 }}><Image rounded="true" src={profile["image"]}></Image></NavLink>
-            <NavLink to='/cart' style={{ margin: 15 }}><box-icon  type='solid' name='cart'></box-icon></NavLink>
-            <Button onClick={logout} style={{ margin: 15 }}><box-icon  name='log-out' animation='tada-hover'></box-icon></Button>
+            <NavLink to='/profile' style={{ margin: 15 }}><Image style={{ height:"50px", weight:"50px", }} rounded="true" src={profile["image"]}></Image></NavLink>
+            <NavLink to='/cart' style={{ margin: 15 }}>
+                <box-icon  type='solid' name='cart'></box-icon>
+                <Badge bg="light" text="dark">
+                0
+                </Badge>
+            </NavLink>
+            <NavLink onClick={logout}  style={{ margin: 15 }}><box-icon  name='log-out' animation='tada-hover'></box-icon></NavLink>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
-      <>
-      <Alert show={show} variant="success">
-        <Alert.Heading>You are now login</Alert.Heading>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="outline-success">
-            Close
-          </Button>
-        </div>
-      </Alert>
-    </>
-      </Container>      
+      </Navbar>  
     );
     
   }else{
@@ -88,7 +81,12 @@ function NavScrollExample() {
               ))}
               </NavDropdown>
             </Nav>
-            <NavLink to='/cart' style={{ margin: 15 }}><box-icon  type='solid' name='cart'></box-icon></NavLink>
+            <NavLink to='/cart' style={{ margin: 15 }}>
+              <box-icon  type='solid' name='cart'></box-icon>
+              <Badge bg="light" text="dark">
+                12
+              </Badge>
+            </NavLink>
             <NavLink to='/login' style={{ margin: 15 }}><box-icon  name='log-in' animation='tada-hover'></box-icon></NavLink>
           </Navbar.Collapse>
         </Container>

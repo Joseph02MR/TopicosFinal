@@ -12,7 +12,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { Col, Container, Row } from "react-bootstrap";
-
+import Modal from 'react-bootstrap/Modal';
 class login extends Component {
   constructor(props){
     super(props);
@@ -41,12 +41,30 @@ class login extends Component {
         })
     }).then((res)=>res.json())
     .then((data)=>{
-        console.log("Login exitoso")
         localStorage.setItem("SESSION",JSON.stringify(data));
+        console.log("Login exitoso");
         window.location.href="/";
     })
+
+    console.log(localStorage.getItem("SESSION"));
   }
+  
   render() {
+    if(localStorage.getItem("ERRROR")){
+      <Modal
+      size="sm"
+      show="true"
+      aria-labelledby="example-modal-sizes-title-sm"
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="example-modal-sizes-title-sm">
+          ERROR
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Please check the email or password!</Modal.Body>
+    </Modal>
+    localStorage.clear();
+    }
     return (
       <Container fluid style={{ margin: "auto" }}>
         <Row style={{ alignContent: "center", margin: 30 }}>
@@ -55,7 +73,7 @@ class login extends Component {
               <div className="text-center">
                 <img src={logo} style={{ width: "185px" }} alt="logo" />
                 <h4 className="mt-1 mb-5 pb-1">We are Le José Team</h4>
-              </div>
+              </div>              
               <p>Please login to your account</p>
               <form onSubmit={this.handleSubmit}>
                 <MDBInput
