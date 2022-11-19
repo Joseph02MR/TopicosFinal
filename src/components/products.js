@@ -8,7 +8,7 @@ import { Datacontext } from '../context/DataProvider';
 function ProductsGroup() {
   const value = useContext(Datacontext);
   const[productos] = value.productos;
-  console.log(productos);
+  //console.log(productos);
     return (
       <Container fluid>
         <Row xs={1} sm={2} md={3} lg={4} className="g-2">
