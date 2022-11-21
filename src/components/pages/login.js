@@ -2,69 +2,58 @@ import logo from "../../assets/logo_store.png";
 import React, { Component } from "react";
 import {
   MDBBtn,
-  MDBContainer,
-  MDBCard,
-  MDBCardBody,
   MDBCol,
-  MDBRow,
   MDBInput,
-  MDBCheckbox,
-  MDBIcon,
 } from "mdb-react-ui-kit";
+import { NavLink } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
-import Modal from 'react-bootstrap/Modal';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 class login extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     localStorage.clear();
-    this.state={
-        email:"",
-        password:"",
+    this.state = {
+      email: "",
+      password: "",
     };
-    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(e){
+  async handleSubmit(e) {
     e.preventDefault();
-    const{email,password}=this.state;
-    console.log(email,password);
-    fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/login',{
-        method:"POST",
-        crossDomain:true,
-        headers:{
-            "Content-Type":"application/json",
-            Accept:"application/json",
-            "Access-Control-Allow-Origin":"*",
+    const { email, password } = this.state;
+    console.log(email, password);
+    const MySwal = withReactContent(Swal);
+    try {
+      await fetch("http://localhost:8000/api/v1/login", {
+        method: "POST",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
-        body:JSON.stringify({
-            email,
-            password,
-        })
-    }).then((res)=>res.json())
-    .then((data)=>{
-        localStorage.setItem("SESSION",JSON.stringify(data));
-        console.log("Login exitoso");
-        window.location.href="/";
-    })
-
-    console.log(localStorage.getItem("SESSION"));
-  }
-  
-  render() {
-    if(localStorage.getItem("ERRROR")){
-      <Modal
-      size="sm"
-      show="true"
-      aria-labelledby="example-modal-sizes-title-sm"
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-sm">
-          ERROR
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>Please check the email or password!</Modal.Body>
-    </Modal>
-    localStorage.clear();
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("SESSION", JSON.stringify(data));
+          window.location.href = "/";
+        });
+    } catch (error) {
+      MySwal.fire({
+        title: <strong>Oops...</strong>,
+        html: <i>Please check the email or password!</i>,
+        icon: "error",
+      });
     }
+  }
+
+  render() {
     return (
       <Container fluid style={{ margin: "auto" }}>
         <Row style={{ alignContent: "center", margin: 30 }}>
@@ -73,7 +62,7 @@ class login extends Component {
               <div className="text-center">
                 <img src={logo} style={{ width: "185px" }} alt="logo" />
                 <h4 className="mt-1 mb-5 pb-1">We are Le José Team</h4>
-              </div>              
+              </div>
               <p>Please login to your account</p>
               <form onSubmit={this.handleSubmit}>
                 <MDBInput
@@ -81,14 +70,16 @@ class login extends Component {
                   label="Email address"
                   id="form1"
                   type="email"
-                  onChange={e=>this.setState({email:e.target.value})}
+                  required
+                  onChange={(e) => this.setState({ email: e.target.value })}
                 />
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Password"
                   id="form2"
                   type="password"
-                  onChange={e=>this.setState({password:e.target.value})}
+                  required
+                  onChange={(e) => this.setState({ password: e.target.value })}
                 />
                 <div className="text-center pt-1 mb-5 pb-1">
                   <MDBBtn
@@ -103,9 +94,7 @@ class login extends Component {
                 </div>
                 <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
                   <p className="mb-0">Don't have an account?</p>
-                  <MDBBtn outline className="mx-2" color="info">
-                    Register now!
-                  </MDBBtn>
+                  <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/register" end>Register now!</NavLink> 
                 </div>
               </form>
             </div>
@@ -117,26 +106,15 @@ class login extends Component {
                   We are more than just a company
                 </h4>
                 <p class="small mb-0" style={{ textAlign: "center" }}>
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE,
-                  JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE, JOSE
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus venenatis pretium ornare. Nam consequat condimentum
+                  diam id ullamcorper. Morbi nec nisl nulla. In hendrerit
+                  ultricies rutrum. Donec venenatis vulputate sapien in egestas.
+                  Fusce volutpat ac ex feugiat condimentum. Nam sit amet
+                  convallis odio. Curabitur vulputate porta sagittis.
+                  Pellentesque accumsan rhoncus mollis. Etiam vitae aliquam
+                  libero, quis tempus urna. Sed nec nisi interdum orci maximus
+                  bibendum
                 </p>
               </div>
             </div>
