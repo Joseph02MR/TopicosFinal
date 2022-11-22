@@ -26,7 +26,7 @@ class login extends Component {
     console.log(email, password);
     const MySwal = withReactContent(Swal);
     try {
-      await fetch("http://localhost:8000/api/v1/login", {
+      await fetch("https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/login", {
         method: "POST",
         crossDomain: true,
         headers: {
