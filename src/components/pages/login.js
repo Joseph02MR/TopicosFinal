@@ -42,7 +42,7 @@ class login extends Component {
         .then((res) => res.json())
         .then((data) => {
           localStorage.setItem("SESSION", JSON.stringify(data));
-          window.location.href = "/";
+          
         });
     } catch (error) {
       MySwal.fire({
@@ -51,6 +51,11 @@ class login extends Component {
         icon: "error",
       });
     }
+    const profile = JSON.parse(localStorage.getItem('SESSION'));
+    if(profile["isAdmin"]){
+      window.location.href = "/Dashboard";
+    }
+    window.location.href = "/";
   }
 
   render() {

@@ -1,5 +1,6 @@
 import "./App.css";
 import Home from "./components/pages/home";
+import Dashboard from "./components/admin/pages/dashboard";
 import Products from "./components/pages/products";
 import Login from "./components/pages/login";
 import Profile from "./components/pages/profile";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/cart" exact element={<Cart />} />
           <Route path='/register' exact element={<Register/>}/>
           <Route path='/profile' exact element={<Profile/>}/>
+          <Route path="/Dasboard" exact element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>
