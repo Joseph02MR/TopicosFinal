@@ -1,23 +1,87 @@
 import { MDBBtn, MDBCol, MDBInput } from "mdb-react-ui-kit";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, DropdownButton, Row } from "react-bootstrap";
+import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo_store.png";
 import React, { Component } from "react";
 import reCAPTCHA from "react-google-recaptcha";
+import Combobox from "react-widgets/Combobox";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 class register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name:"",
-      lastname:"",
+      name: "",
+      lastname: "",
       email: "",
       password: "",
-      gender:"",
+      gender: "",
     };
     this.registerEvent = this.registerEvent.bind(this);
   }
-  async registerEvent(e){
-    
+  async registerEvent(e) {
+    e.preventDefault();
+    const { email, password, name, lastname,phone} = this.state;
+    console.log(email, password, name, lastname,phone);
+    const image='https://robohash.org/'+name+' '+lastname+'.png';
+    const username=name+'.'+lastname;
+    const role="client";
+    try {
+      await fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/getlast',{
+        method:"GET",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }).then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("temp_id",JSON.stringify(data));
+      });
+    } catch (error) {
+      
+    }
+    const id=JSON.parse(localStorage.getItem("temp_id"))[0]["id"]+1;
+    const MySwal = withReactContent(Swal);
+    try {
+      await fetch("https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/register/", {
+        method: "POST",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          name,
+          lastname,
+          phone,
+          image,
+          username,
+          id,
+          role,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          MySwal.fire({
+            title: <strong>OK</strong>,
+            html: <i>Resgister complete, please login in your account!</i>,
+            icon: "success",
+          });
+          window.location.href = "/login";
+        });
+    } catch (error) {
+      MySwal.fire({
+        title: <strong>Oops...</strong>,
+        html: <i>Please contact the admin</i>,
+        icon: "error",
+      });
+    }
   }
   render() {
     return (
@@ -51,13 +115,14 @@ class register extends Component {
                 <p>You're almost there, lets get some data</p>
               </div>
               <br></br>
-              <form>
+              <form onSubmit={this.registerEvent}>
                 <MDBInput
                   wrapperClass="mb-3"
                   label="Your name"
                   placeholder="Insert your name"
                   id="reg_name"
                   type=""
+                  onChange={(e) => this.setState({ name: e.target.value })}
                 />
                 <MDBInput
                   wrapperClass="mb-3"
@@ -65,6 +130,7 @@ class register extends Component {
                   placeholder="Insert your lastname"
                   id="reg_name"
                   type=""
+                  onChange={(e) => this.setState({ lastname: e.target.value })}
                 />
                 <MDBInput
                   wrapperClass="mb-3"
@@ -72,6 +138,7 @@ class register extends Component {
                   placeholder="example@email.com"
                   id="reg_email"
                   type="email"
+                  onChange={(e) => this.setState({ email: e.target.value })}
                 />
                 <MDBInput
                   wrapperClass="mb-3"
@@ -79,6 +146,7 @@ class register extends Component {
                   placeholder="+52XXXXXXXXXX"
                   id="reg_email"
                   type="text"
+                  onChange={(e) => this.setState({ phone: e.target.value })}
                 />
                 <MDBInput
                   wrapperClass="mb-3"
@@ -86,33 +154,8 @@ class register extends Component {
                   placeholder="Insert your password, keep it in mind"
                   id="reg_password"
                   type="password"
+                  onChange={(e) => this.setState({ password: e.target.value })}
                 />
-                <h8 class="text-centre">Gender: </h8>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                    value="option1"
-                  />
-                  <label class="form-check-label" for="inlineRadio1">
-                    Male
-                  </label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio2"
-                    value="option2"
-                  />
-                  <label class="form-check-label" for="inlineRadio2">
-                    Female
-                  </label>
-                </div>
                 <reCAPTCHA />
                 <div className="text-center pt-1 mb-5 pb-1">
                   <MDBBtn
