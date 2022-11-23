@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import React, {useContext, useRef, useState} from 'react';
 import { Datacontext } from '../context/DataProvider';
+import { Input } from '@mui/material';
+
 
 const prods_pp = 20; //productos por pagina
 
@@ -26,13 +28,16 @@ function ProductsGroup() {
         <Row xs={1} sm={2} md={3} lg={4} className="g-2">
         {productos.slice(currentIndex,endPosition).map((product)=>(
             <Col style={{ padding:15 }}>
-              <Card class="card" style={{ objectFit:'contain', Height:350 }} >
+              <Card class="card" style={{ objectFit:'contain', Height:350, textAlign:"center" }} >
                 <><Card.Img style={{ objectFit:'contain', height:250 }} variant="top" class="cards-img" src={product.images[0]} /><Card.Body>
                   <Card.Title style={{ height:50 }} >{product.title}</Card.Title>
                   <Card.Text style={{ height:150 }}>
                     {product.description}
                   </Card.Text>
-                  <Button variant="primary">Buy Now!</Button>{' '}
+                  <Button variant="primary"> Add to cart!</Button>{' '}
+                  <br></br>
+                  <Card.Text>Quantity:</Card.Text>
+                  <input class="text-center" type="number" defaultValue={"1"}  min="2" max="30" step="1"/>
                 </Card.Body></>
               </Card>
             </Col>
