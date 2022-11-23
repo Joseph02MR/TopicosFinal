@@ -9,6 +9,7 @@ import { Link, NavLink } from "react-router-dom";
 import { padding } from "@mui/system";
 import React, {useContext} from 'react';
 import { useState } from "react";
+import { useEffect } from "react";
 import { Datacontext } from '../context/DataProvider';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image'
@@ -16,9 +17,8 @@ import Badge from 'react-bootstrap/Badge';
 function NavScrollExample() {
   const value = useContext(Datacontext);
   const[categories] = value.categories;
-  const [show, setShow] = useState(true);
   const logout = ()=>{
-    localStorage.clear();
+    localStorage.removeItem("SESSION");
     window.location.href="/";
   }
   if(localStorage.getItem("SESSION")){
@@ -49,7 +49,7 @@ function NavScrollExample() {
             <NavLink to='/cart' style={{ margin: 15 }}>
                 <box-icon  type='solid' name='cart'></box-icon>
                 <Badge bg="light" text="dark">
-                0
+                
                 </Badge>
             </NavLink>
             <NavLink onClick={logout}  style={{ margin: 15 }}><box-icon  name='log-out' animation='tada-hover'></box-icon></NavLink>
@@ -84,7 +84,7 @@ function NavScrollExample() {
             <NavLink to='/cart' style={{ margin: 15 }}>
               <box-icon  type='solid' name='cart'></box-icon>
               <Badge bg="light" text="dark">
-                12
+              
               </Badge>
             </NavLink>
             <NavLink to='/login' style={{ margin: 15 }}><box-icon  name='log-in' animation='tada-hover'></box-icon></NavLink>

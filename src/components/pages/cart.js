@@ -14,6 +14,8 @@ import {
 } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
 function cart() {
+  const carrito=JSON.parse(localStorage.getItem("CART"));
+  console.log(carrito);
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
   <MDBContainer className="py-5 h-100">
@@ -29,7 +31,7 @@ function cart() {
                       Shopping Cart
                     </MDBTypography>
                     <MDBTypography className="mb-0 text-muted">
-                      3 items
+
                     </MDBTypography>
                   </div>
 

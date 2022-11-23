@@ -7,6 +7,7 @@ import { Datacontext } from '../context/DataProvider';
 
 const prods_pp = 20; //productos por pagina
 
+
 function ProductsGroup() {
   const quantityPageRef = useRef(12);
   const [currentIndex,setCurrentIndex] = useState(0);
@@ -14,6 +15,13 @@ function ProductsGroup() {
   const value = useContext(Datacontext);
   const[productos] = value.productos;
   //console.log(productos);
+  const [cart, setCart] = useState([]);
+  function addItemToCart(e) {
+    localStorage.removeItem("CART");
+    const item = e.target.value;
+    setCart([...cart, item]);
+    localStorage.setItem("CART",JSON.stringify(cart));
+  }
 
   const handlePagination = (index) => {
 
@@ -32,7 +40,7 @@ function ProductsGroup() {
                   <Card.Text style={{ height:150 }}>
                     {product.description}
                   </Card.Text>
-                  <Button variant="primary">Buy Now!</Button>{' '}
+                  <Button value={JSON.stringify(product)} onClick={addItemToCart} variant="primary">Buy Now!</Button>{' '}
                 </Card.Body></>
               </Card>
             </Col>
