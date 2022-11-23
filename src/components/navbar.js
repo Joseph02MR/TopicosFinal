@@ -69,6 +69,7 @@ function NavScrollExample() {
         <Navbar.Toggle aria-controls=""  style={{  marginRight: 20 }}/>
         <Navbar.Collapse id="navbarScroll" style={{ textAlign:'center', paddingRight: 10 }} >
           <Nav
+          
             
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "250px" }}
