@@ -24,7 +24,7 @@ function ProductsGroup() {
 
   }
     return (
-      <Container fluid>
+      <Container fluid style={{ textAlign:'center'}}>
         <Row xs={1} sm={2} md={3} lg={4} className="g-2">
         {productos.slice(currentIndex,endPosition).map((product)=>(
             <Col style={{ padding:15 }}>
@@ -35,19 +35,23 @@ function ProductsGroup() {
                     {product.description}
                   </Card.Text>
                   <Button variant="primary"> Add to cart!</Button>{' '}
-                  <br></br>
-                  <Card.Text>Quantity:</Card.Text>
-                  <input class="text-center" type="number" defaultValue={"1"}  min="2" max="30" step="1"/>
                 </Card.Body></>
               </Card>
             </Col>
             ))}
         </Row>
         {Array(Math.ceil(productos.length / quantityPageRef.current)).fill(null).map((_,index) =>(
-
-          <Button  variant="outline-primary" style={{ margin:2, marginLeft:10}} className={`${currentIndex === 0 && index === currentIndex ? 'active' : index === currentIndex/quantityPageRef.current && "active"  }`} onClick={()=>handlePagination(index)}>{index + 1}</Button>
+          
+            <Button  variant="outline-primary" style={{ margin:2, marginLeft:10, marginBottom:15}} className={`${currentIndex === 0 && index === currentIndex ? 'active' : index === currentIndex/quantityPageRef.current && "active"  }`} onClick={()=>handlePagination(index)}>{index + 1}</Button>
+          
         ))}
         </Container>
+         
+
+
+         
+
+
       );
 }
 
