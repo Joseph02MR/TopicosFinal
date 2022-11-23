@@ -1,4 +1,3 @@
-import { left } from "@popperjs/core";
 import { Col, Container, Image, Row } from "react-bootstrap";
 
 function Contentblock() {

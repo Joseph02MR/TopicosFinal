@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import React, {useContext, useRef, useState} from 'react';
 import { Datacontext } from '../context/DataProvider';
+import { Input } from '@mui/material';
+
 
 const prods_pp = 20; //productos por pagina
 
@@ -30,27 +32,34 @@ function ProductsGroup() {
 
   }
     return (
-      <Container fluid>
+      <Container fluid style={{ textAlign:'center'}}>
         <Row xs={1} sm={2} md={3} lg={4} className="g-2">
         {productos.slice(currentIndex,endPosition).map((product)=>(
             <Col style={{ padding:15 }}>
-              <Card class="card" style={{ objectFit:'contain', Height:350 }} >
+              <Card class="card" style={{ objectFit:'contain', Height:350, textAlign:"center" }} >
                 <><Card.Img style={{ objectFit:'contain', height:250 }} variant="top" class="cards-img" src={product.images[0]} /><Card.Body>
                   <Card.Title style={{ height:50 }} >{product.title}</Card.Title>
                   <Card.Text style={{ height:150 }}>
                     {product.description}
                   </Card.Text>
-                  <Button value={JSON.stringify(product)} onClick={addItemToCart} variant="primary">Buy Now!</Button>{' '}
+                  <Button value={JSON.stringify(product)} onClick={addItemToCart} variant="primary">Add to cart</Button>{' '}
                 </Card.Body></>
               </Card>
             </Col>
             ))}
         </Row>
         {Array(Math.ceil(productos.length / quantityPageRef.current)).fill(null).map((_,index) =>(
-
-          <Button  variant="outline-primary" style={{ margin:2, marginLeft:10}} className={`${currentIndex === 0 && index === currentIndex ? 'active' : index === currentIndex/quantityPageRef.current && "active"  }`} onClick={()=>handlePagination(index)}>{index + 1}</Button>
+          
+            <Button  variant="outline-primary" style={{ margin:2, marginLeft:10, marginBottom:15}} className={`${currentIndex === 0 && index === currentIndex ? 'active' : index === currentIndex/quantityPageRef.current && "active"  }`} onClick={()=>handlePagination(index)}>{index + 1}</Button>
+          
         ))}
         </Container>
+         
+
+
+         
+
+
       );
 }
 
