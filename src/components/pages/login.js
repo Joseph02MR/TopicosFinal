@@ -51,9 +51,10 @@ class login extends Component {
         icon: "error",
       });
     }
+    
     const profile = JSON.parse(localStorage.getItem('SESSION'));
-    if(profile["isAdmin"]){
-      window.location.href = "/Dashboard";
+    if(profile["role"] = 'Admin'){
+      window.location.href = "/dashboard";
     }
     window.location.href = "/";
   }

@@ -22,7 +22,7 @@ function App() {
           <Route path="/cart" exact element={<Cart />} />
           <Route path='/register' exact element={<Register/>}/>
           <Route path='/profile' exact element={<Profile/>}/>
-          <Route path="/Dasboard" exact element={<Dashboard />} />
+          <Route path="/dashboard" exact element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>

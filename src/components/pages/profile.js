@@ -1,5 +1,6 @@
 import logo from "../../assets/logo_store.png";
 import React, { Component } from "react";
+import { CChart } from '@coreui/react-chartjs';
 import {
     MDBContainer,
     MDBCol,
