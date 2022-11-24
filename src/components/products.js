@@ -39,8 +39,11 @@ function ProductsGroup() {
               <Card class="card" style={{ objectFit:'contain', Height:350, textAlign:"center" }} >
                 <><Card.Img style={{ objectFit:'contain', height:250 }} variant="top" class="cards-img" src={product.images[0]} /><Card.Body>
                   <Card.Title style={{ height:50 }} >{product.title}</Card.Title>
-                  <Card.Text style={{ height:150 }}>
+                  <Card.Text style={{ height:100 }}>
                     {product.description}
+                  </Card.Text>
+                  <Card.Text>
+                    $ {product.price} USD
                   </Card.Text>
                   <Button value={JSON.stringify(product)} onClick={addItemToCart} variant="primary">Add to cart</Button>{' '}
                 </Card.Body></>
