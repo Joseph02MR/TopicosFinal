@@ -94,7 +94,7 @@ function Dashboard() {
                                                     <p className="mb-0">41</p>
                                                 </div>
                                                 <div className="px-3">
-                                                    <p className="small text-muted mb-1">Stores</p>
+                                                    <p className="small text-muted mb-1">Buyers</p>
                                                     <p className="mb-0">976</p>
                                                 </div>
                                                 <div>
