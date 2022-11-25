@@ -1,9 +1,12 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 import React from 'react';
 import Barchart from './charts/Barchart';
 import { UserData } from "./Data";
 import { DataAnual } from "./DataAnual";
 import logo from "../../../assets/logo_store.png";
+import withReactContent from 'sweetalert2-react-content'
+import Table from 'react-bootstrap/Table';
 import {
     MDBCol,
     MDBContainer,
@@ -20,6 +23,66 @@ import {
 import { Container } from "react-bootstrap";
 
 function Dashboard() {
+    pedidos();
+
+    async function pedidos() {
+        const MySwal = withReactContent(Swal);
+        try {
+            await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/get/", {
+                method: "GET",
+                crossDomain: true,
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    localStorage.setItem("PEDIDOS", JSON.stringify(data));
+
+                });
+        } catch (error) {
+            MySwal.fire({
+                title: <strong>Oops...</strong>,
+                html: <i>Please check the information on the orders</i>,
+                icon: "error",
+            });
+        }
+    }
+
+    async function updpedidos(e){
+        const MySwal = withReactContent(Swal);
+        const status= e.value;
+        
+        try {
+            await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/update/" , {
+              method: "PUT",
+              crossDomain: true,
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+              body: JSON.stringify({
+                status
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                localStorage.setItem("PEDIDOS", JSON.stringify(data));                
+              });
+          } catch (error) {
+            MySwal.fire({
+              title: <strong>Oops...</strong>,
+              html: <i>oops</i>,
+              icon: "error",
+            });
+          }
+    }
+
+    const pedido = JSON.parse(localStorage.getItem('PEDIDOS'));
+
     const [userData, setUserData] = useState({
         labels: UserData.map((data) => data.Day),
         datasets: [
@@ -128,7 +191,7 @@ function Dashboard() {
                                     <MDBCardTitle>Generar reporte de Ventas</MDBCardTitle>
                                     <MDBCardText>(Semanal)</MDBCardText>
                                     <div className="d-flex pt-1">
-                                        <MDBBtn outline className="me-1 flex-grow-1">Chat</MDBBtn>
+
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +214,7 @@ function Dashboard() {
                                     <MDBCardTitle>Generar reporte de Ventas</MDBCardTitle>
                                     <MDBCardText>(Anual)</MDBCardText>
                                     <div className="d-flex pt-1">
-                                        <MDBBtn outline className="me-1 flex-grow-1">Chat</MDBBtn>
+
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +222,30 @@ function Dashboard() {
                     </MDBCard>
                 </MDBCol>
             </MDBRow>
-
+            <br></br>
+            <br></br>
+            <MDBRow>
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {pedido.map((ped) => (
+                            <tr>
+                                <td>{ped.id}</td>
+                                <td>{ped.status}</td>
+                                <td><MDBBtn outline className="ms-1" onClick={updpedidos} value="placed">Placed</MDBBtn>
+                                <MDBBtn outline className="ms-1" onClick={updpedidos} value="On-Delivery">On-Delivery</MDBBtn>
+                                <MDBBtn outline className="ms-1" onClick={updpedidos} value="delivered">Delivered</MDBBtn></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </MDBRow>
         </Container>
 
     );
