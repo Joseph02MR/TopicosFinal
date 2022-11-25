@@ -15,14 +15,17 @@ import {
 import { NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Swal from "sweetalert2";
 
 function cart() {
   var total = 0;
+  var products=[];
   const carrito = JSON.parse(localStorage.getItem("CART"));
   const result = Array.isArray(carrito)
     ? carrito.map((element) => element)
     : [];
   result.map((element) => (total += JSON.parse(element)["price"]));
+  result.map((element) => (products.push(JSON.parse(element)["_id"])));
   var subtotal = total;
   function apply_disc(e) {
     const button = document.querySelector("#btndisc");
@@ -170,10 +173,70 @@ function cart() {
                               ],
                             });
                           }}
-                          onApprove={(data, actions) => {
-                            return actions.order.capture().then((details) => {
-                              const name = details.payer.name.given_name;
-                              alert(`Transaction completed by ${name}`);
+                          onApprove= {(data, actions) => {
+                            return  actions.order.capture().then(async(details) => {
+                              const dest_address=details.payer.address.address_line_1 +" "+details.payer.address.address_line_2+" "+details.payer.address.admin_area_1+" "+details.payer.address.admin_area_2+" "+details.payer.address.postal_code;
+                              const date=details.create_time;
+                              const profile = JSON.parse(localStorage.getItem('SESSION'));
+                              const status="placed";
+                              var user_id;
+                              if(profile===null){
+                                user_id="";
+                              }else{
+                                user_id=profile["id"];
+                              }
+                              try {
+                                await fetch('https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/getlast',{
+                                  method:"GET",
+                                  crossDomain: true,
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    Accept: "application/json",
+                                    "Access-Control-Allow-Origin": "*",
+                                  },
+                                }).then((res) => res.json())
+                                .then((data) => {
+                                  localStorage.setItem("temp_id",JSON.stringify(data));
+                                });
+                              } catch (error) {
+                                
+                              }
+                              const id=JSON.parse(localStorage.getItem("temp_id"))[0]["id"]+1;
+                              try {
+                                await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/add", {
+                                  method: "POST",
+                                  crossDomain: true,
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    Accept: "application/json",
+                                    "Access-Control-Allow-Origin": "*",
+                                  },
+                                  body: JSON.stringify({
+                                    id,
+                                    date,
+                                    user_id,
+                                    products,
+                                    status,
+                                    dest_address,
+                                  }),
+                                })
+                                  .then((res) => res.json())
+                                  .then((data) => {
+                                    //SI SE COMPRÓ
+                                    Swal.fire({
+                                      position: 'center',
+                                      icon: 'success',
+                                      title: 'Your order has been placed',
+                                      showConfirmButton: false,
+                                      timer: 1500
+                                    })
+                                    localStorage.removeItem("CART");
+                                    localStorage.removeItem("tdd");
+                                    window.href="/";
+                                  });
+                              } catch (error) {
+                               //PASO ALGO
+                              }
                             });
                           }}
                         />
