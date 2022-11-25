@@ -74,8 +74,9 @@ pedidos();
         }
       )
         .then((res) => res.json())
-        .then((data) => {
+        .then(async(data) => {
           localStorage.removeItem("PEDIDOS");
+          await pedidos();
           window.location.href="/dashboard";
         });
     } catch (error) {
