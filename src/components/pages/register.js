@@ -28,7 +28,7 @@ class register extends Component {
     const username=name+'.'+lastname;
     const role="client";
     try {
-      await fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/getlast',{
+      await fetch('https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/getlast',{
         method:"GET",
         crossDomain: true,
         headers: {
@@ -46,7 +46,7 @@ class register extends Component {
     const id=JSON.parse(localStorage.getItem("temp_id"))[0]["id"]+1;
     const MySwal = withReactContent(Swal);
     try {
-      await fetch("https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/register/", {
+      await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/register/", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -67,8 +67,8 @@ class register extends Component {
         }),
       })
         .then((res) => res.json())
-        .then((data) => {
-          MySwal.fire({
+        .then(async (data) => {
+          await MySwal.fire({
             title: <strong>OK</strong>,
             html: <i>Resgister complete, please login in your account!</i>,
             icon: "success",

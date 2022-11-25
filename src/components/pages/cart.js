@@ -145,9 +145,7 @@ function cart() {
                           </Button>
                         </MDBInput>
                       </div>
-
                       <hr className="my-4" />
-
                       <div className="d-flex justify-content-between mb-5">
                         <MDBTypography tag="h5" className="text-uppercase">
                           Total price
@@ -179,11 +177,11 @@ function cart() {
                               const date=details.create_time;
                               const profile = JSON.parse(localStorage.getItem('SESSION'));
                               const status="placed";
-                              var user_id;
+                              var user_id="";
                               if(profile===null){
                                 user_id="";
                               }else{
-                                user_id=profile["id"];
+                                user_id=profile["oid"];
                               }
                               try {
                                 await fetch('https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/getlast',{
@@ -221,18 +219,18 @@ function cart() {
                                   }),
                                 })
                                   .then((res) => res.json())
-                                  .then((data) => {
+                                  .then(async (data) => {
                                     //SI SE COMPRÓ
-                                    Swal.fire({
+                                    await Swal.fire({
                                       position: 'center',
                                       icon: 'success',
                                       title: 'Your order has been placed',
                                       showConfirmButton: false,
-                                      timer: 1500
+                                      timer: 4500,
                                     })
                                     localStorage.removeItem("CART");
                                     localStorage.removeItem("tdd");
-                                    window.href="/";
+                                    window.location.href = "/";
                                   });
                               } catch (error) {
                                //PASO ALGO
