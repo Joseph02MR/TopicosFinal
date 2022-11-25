@@ -39,13 +39,6 @@ function NavScrollExample() {
             >
               <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
               <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
-              <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
-              {categories.map((categorie)=>(
-                 <NavLink to='/products/CATEG_NAME' style={{ margin: 15 }}>
-                    <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.category}</NavDropdown.Item>
-                  </NavLink>
-              ))}
-              </NavDropdown>
             </Nav>
             <NavLink to='/profile' style={{ margin: 15 }}><Image style={{ height:"50px", weight:"50px", }} rounded="true" src={profile["image"]}></Image></NavLink>
             <NavLink to='/cart' style={{ margin: 15 }}>
@@ -77,13 +70,7 @@ function NavScrollExample() {
           >
             <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
             <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
-            <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
-            {categories.map((categorie)=>(
-               <NavLink to='/products/CATEG_NAME' style={{ margin: 15 }}>
-                  <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.category}</NavDropdown.Item>
-                </NavLink>
-            ))}
-            </NavDropdown>
+
             <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/dashboard" end>Dashboard</NavLink>
           </Nav>
           <NavLink to='/profile' style={{ margin: 15 }}><Image style={{ height:"50px", weight:"50px", }} rounded="true" src={profile["image"]}></Image></NavLink>
@@ -113,13 +100,6 @@ function NavScrollExample() {
             >
               <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
               <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
-              <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
-              {categories.map((categorie)=>(
-                 <NavLink to='/products/CATEG_NAME' style={{ margin: 15 }}>
-                    <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.category}</NavDropdown.Item>
-                  </NavLink>
-              ))}
-              </NavDropdown>
             </Nav>
             <NavLink to='/cart' style={{ margin: 15 }}>
               <box-icon  type='solid' name='cart'></box-icon>
