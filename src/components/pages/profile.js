@@ -1,5 +1,7 @@
 import logo from "../../assets/logo_store.png";
 import React, { Component } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import {
     MDBContainer,
     MDBCol,
@@ -14,14 +16,14 @@ import {
 } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 
- function profile ()  {
-    const profile = JSON.parse(localStorage.getItem('SESSION'));
-    console.log(profile);
+function profile ()  {
 
-  
+const profilee = JSON.parse(localStorage.getItem('SESSION'));
+//console.log(profilee);
+
+
+
     return (
       <Container fluid style={{ margin: "auto" }}>
         <Row style={{ alignContent: "center", margin: 30 }}>
@@ -50,7 +52,7 @@ import withReactContent from "sweetalert2-react-content";
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src={profile["image"]}
+                  src={profilee["image"]}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px' }}
@@ -60,7 +62,7 @@ import withReactContent from "sweetalert2-react-content";
                 <br>
                 </br>
                 <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Editar</MDBBtn>
+                  <MDBBtn ><NavLink style={{ color:"white" , padding:15, textDecoration:"none"}} to="/profileinfo" end>Editar</NavLink> </MDBBtn>
                   <MDBBtn outline className="ms-1">Eliminar</MDBBtn>
                 </div>
               </MDBCardBody>
@@ -75,7 +77,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{profile["name"]}  {profile["lastname"]}</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["name"]}  {profilee["lastname"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -84,7 +86,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{profile["email"]}</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["email"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -93,7 +95,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{profile["phone"]}</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["phone"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -102,16 +104,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Country</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Mexico</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>State</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Guanajuato</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["country"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -120,7 +113,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>City</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Celaya</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["city"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -129,7 +122,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Street</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["street"]}, {profilee["zip"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -138,7 +131,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Gender</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{profile["gender"]}</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["gender"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -147,7 +140,7 @@ import withReactContent from "sweetalert2-react-content";
                     <MDBCardText>Username</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{profile["username"]}</MDBCardText>
+                    <MDBCardText className="text-muted">{profilee["username"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>

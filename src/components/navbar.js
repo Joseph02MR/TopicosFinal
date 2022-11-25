@@ -14,6 +14,7 @@ import { Datacontext } from '../context/DataProvider';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge';
+import profile from "./pages/profile";
 function NavScrollExample() {
   const value = useContext(Datacontext);
   const[categories] = value.categories;
@@ -21,8 +22,9 @@ function NavScrollExample() {
     localStorage.removeItem("SESSION");
     window.location.href="/";
   }
-  if(localStorage.getItem("SESSION")){
     const profile = JSON.parse(localStorage.getItem('SESSION'));
+    
+  if(localStorage.getItem("SESSION") && profile["role"] !== "Admin"){
     return (
         <Navbar sticky="top" bg="light" expand="md">
         <Container fluid>
@@ -58,6 +60,44 @@ function NavScrollExample() {
       </Navbar>  
     );
     
+  }else if(localStorage.getItem("SESSION") && profile["role"] === "Admin"){
+    console.log("abuba");
+    return (
+      <Navbar sticky="top" bg="light" expand="md">
+      <Container fluid>
+        <Navbar.Brand href="#"><NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end><img style={{ height:"70px" }} alt="logo-LeJose" src={logo}/></NavLink></Navbar.Brand>
+        <Navbar.Toggle aria-controls=""  style={{  marginRight: 20 }}/>
+        <Navbar.Collapse id="navbarScroll" style={{ textAlign:'center', paddingRight: 10 }} >
+          <Nav
+          
+            
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: "250px" }}
+            navbarScroll
+          >
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} to="/" end>Home</NavLink> 
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/products" end>Products</NavLink> 
+            <NavDropdown style={{ color:"gray" , padding:5, textDecoration:"none"}} title="Categories" id="navbarScrollingDropdown">
+            {categories.map((categorie)=>(
+               <NavLink to='/products/CATEG_NAME' style={{ margin: 15 }}>
+                  <NavDropdown.Item style={{ textAlign:"center" }} href="#action3">{categorie.category}</NavDropdown.Item>
+                </NavLink>
+            ))}
+            </NavDropdown>
+            <NavLink style={{ color:"gray" , padding:15, textDecoration:"none"}} class="NavButtons" to="/dashboard" end>Dashboard</NavLink>
+          </Nav>
+          <NavLink to='/profile' style={{ margin: 15 }}><Image style={{ height:"50px", weight:"50px", }} rounded="true" src={profile["image"]}></Image></NavLink>
+          <NavLink to='/cart' style={{ margin: 15 }}>
+              <box-icon  type='solid' name='cart'></box-icon>
+              <Badge bg="light" text="dark">
+              0
+              </Badge>
+          </NavLink>
+          <NavLink onClick={logout}  style={{ margin: 15 }}><box-icon  name='log-out' animation='tada-hover'></box-icon></NavLink>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>  
+  );
   }else{
     return (
       <Navbar sticky="top" bg="light" expand="md">
