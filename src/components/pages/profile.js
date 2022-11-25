@@ -20,71 +20,9 @@ import { Col, Container, Row } from "react-bootstrap";
 function profile ()  {
 
 const profilee = JSON.parse(localStorage.getItem('SESSION'));
-const MySwal = withReactContent(Swal);
-console.log(profilee);
-
-let changePwSwal = {
-  title: 'Change any info?',
-  focusConfirm: false,
-  html: 
-    <><form><input required class="swal2-input" id="nombre" placeholder="Enter your new name..." value={profilee["name"]} /><br />
-    <input required class="swal2-input" id="apellido" placeholder="Enter your new last name..." value={profilee["lastname"]} /><br />
-    <input required class="swal2-input" id="telefono" placeholder="Confirm your new phone..." value={profilee["phone"]} />
-    <input required class="swal2-input" id="pais" placeholder="Confirm your new country..." value={profilee["country"]} />
-    <input required class="swal2-input" id="ciudad" placeholder="Confirm your new city..." value={profilee["city"]} />
-    <input required class="swal2-input" id="cpostal" placeholder="Confirm your new postcode..." value={profilee["zip"]} />
-    <input required class="swal2-input" id="calle" placeholder="Confirm your new street..." value={profilee["street"]} /></form></>
-  ,
-  type: 'warning',
-  showCancelButton: true,
-  cancelButtonColor: 'grey',
-  confirmButtonText: 'Update!',
-  allowOutsideClick: false,
-  preConfirm: () => ({
-    Name: document.getElementById('nombre').value,
-    LastName: document.getElementById('apellido').value,
-    Phone: document.getElementById('telefono').value,
-    Country: document.getElementById('pais').value,
-    City: document.getElementById('ciudad').value,
-    Street: document.getElementById('calle').value,
-    Zip: document.getElementById('cpostal').value
-  })
-};
+//console.log(profilee);
 
 
-    const handleResetPassword = () => {
-      const updateinfo = async () =>{
-        const swalval = await MySwal.fire(changePwSwal);
-        let v = swalval && swalval.value || swalval.dismiss;
-        try {
-          await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/", {
-            method: "POST",
-            crossDomain: true,
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({
-              email,
-              password,
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              localStorage.setItem("SESSION", JSON.stringify(data));
-              
-            });
-        } catch (error) {
-          MySwal.fire({
-            title: <strong>Oops...</strong>,
-            html: <i>Please check the email or password!</i>,
-            icon: "error",
-          });
-        }
-      }
-      updateinfo();
-    }
 
     return (
       <Container fluid style={{ margin: "auto" }}>
@@ -124,7 +62,7 @@ let changePwSwal = {
                 <br>
                 </br>
                 <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn onClick={handleResetPassword}>Editar</MDBBtn>
+                  <MDBBtn ><NavLink style={{ color:"white" , padding:15, textDecoration:"none"}} to="/profileinfo" end>Editar</NavLink> </MDBBtn>
                   <MDBBtn outline className="ms-1">Eliminar</MDBBtn>
                 </div>
               </MDBCardBody>
@@ -167,15 +105,6 @@ let changePwSwal = {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">{profilee["country"]}</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>State</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{profilee["state"]}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
