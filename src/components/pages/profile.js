@@ -17,8 +17,11 @@ import {
 import { NavLink } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 
+function profile ()  {
+
 const profilee = JSON.parse(localStorage.getItem('SESSION'));
 const MySwal = withReactContent(Swal);
+console.log(profilee);
 
 let changePwSwal = {
   title: 'Change any info?',
@@ -48,40 +51,40 @@ let changePwSwal = {
   })
 };
 
- function profile ()  {
-    
-const handleResetPassword = () => { 
-  
-    const swalval =  MySwal.fire(changePwSwal);
-    try {
-      await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/", {
-        method: "POST",
-        crossDomain: true,
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          localStorage.setItem("SESSION", JSON.stringify(data));
-          
-        });
-    } catch (error) {
-      MySwal.fire({
-        title: <strong>Oops...</strong>,
-        html: <i>Please check the email or password!</i>,
-        icon: "error",
-      });
+
+    const handleResetPassword = () => {
+      const updateinfo = async () =>{
+        const swalval = await MySwal.fire(changePwSwal);
+        let v = swalval && swalval.value || swalval.dismiss;
+        try {
+          await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+              email,
+              password,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              localStorage.setItem("SESSION", JSON.stringify(data));
+              
+            });
+        } catch (error) {
+          MySwal.fire({
+            title: <strong>Oops...</strong>,
+            html: <i>Please check the email or password!</i>,
+            icon: "error",
+          });
+        }
+      }
+      updateinfo();
     }
-
-
-}
 
     return (
       <Container fluid style={{ margin: "auto" }}>
