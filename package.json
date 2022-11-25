@@ -20,6 +20,7 @@
     "react-paginate": "^8.1.4",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-widgets": "^5.8.4",
     "sweetalert2": "^11.6.10",
     "sweetalert2-react-content": "^5.0.7",
     "web-vitals": "^2.1.4"

@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import React, {useContext, useRef, useState} from 'react';
 import { Datacontext } from '../context/DataProvider';
 import { Input } from '@mui/material';
+import Swal from 'sweetalert2';
 
 
 const prods_pp = 20; //productos por pagina
@@ -23,6 +24,14 @@ function ProductsGroup() {
     const item = e.target.value;
     setCart([...cart, item]);
     localStorage.setItem("CART",JSON.stringify(cart));
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your product was added to cart',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   const handlePagination = (index) => {
