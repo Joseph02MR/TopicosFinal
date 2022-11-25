@@ -91,7 +91,7 @@ class login extends Component {
                     type="submit"
                     className="mb-4 w-100 gradient-custom-2"
                   >
-                    Sign in
+                    Login
                   </MDBBtn>
                   <a className="text-muted" href="#!">
                     Forgot password?
