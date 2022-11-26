@@ -177,9 +177,9 @@ function cart() {
                               const date=details.create_time;
                               const profile = JSON.parse(localStorage.getItem('SESSION'));
                               const status="placed";
-                              var user_id="";
+                              var user_id=null;
                               if(profile===null){
-                                user_id="";
+                                user_id=null;
                               }else{
                                 user_id=profile["oid"];
                               }
