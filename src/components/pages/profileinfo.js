@@ -38,7 +38,7 @@ class info extends Component {
     const profilee = JSON.parse(localStorage.getItem('SESSION'));
     const MySwal = withReactContent(Swal);
     try {
-      await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/" + profilee["oid"], {
+      await fetch("https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/" + profilee["oid"], {
         method: "PUT",
         crossDomain: true,
         headers: {

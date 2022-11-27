@@ -184,7 +184,7 @@ function cart() {
                                 user_id=profile["oid"];
                               }
                               try {
-                                await fetch('https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/getlast',{
+                                await fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/order/getlast',{
                                   method:"GET",
                                   crossDomain: true,
                                   headers: {
@@ -201,7 +201,7 @@ function cart() {
                               }
                               const id=JSON.parse(localStorage.getItem("temp_id"))[0]["id"]+1;
                               try {
-                                await fetch("https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/add", {
+                                await fetch("https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/order/add", {
                                   method: "POST",
                                   crossDomain: true,
                                   headers: {
