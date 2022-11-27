@@ -7,7 +7,7 @@ export  const Dataprovider = (props) =>{
     const[categories, setCats] = useState([])
 
     useEffect(() => {
-        fetch('https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/products')
+        fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/products')
            .then((response) => response.json())
            .then((data) => {
               //console.log(data);
@@ -20,7 +20,7 @@ export  const Dataprovider = (props) =>{
     },[])
 
     useEffect(() => {
-      fetch('https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/products')
+      fetch('https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev//api/v1/products')
          .then((response) => response.json())
          .then((data) => {
             //console.log(data);

@@ -9,7 +9,7 @@ function Contentblock_bottom() {
                     <br></br>
                     <h2 style={{ color:'white', font:"revert", fontSize:"100%", margin:15 }}>¡Contact us, let's get in touch!</h2>
                     <br></br>
-                    <Button size="lg" variant="outline-warning">Come on and telas</Button>
+                    <Button size="lg" variant="outline-warning">Come on and tell us</Button>
                 </Col>
             </Row>
         </Container>

@@ -29,7 +29,7 @@ pedidos();
     const MySwal = withReactContent(Swal);
     try {
       await fetch(
-        "https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/get/",
+        "https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/order/get/",
         {
           method: "GET",
           crossDomain: true,
@@ -59,7 +59,7 @@ pedidos();
     const id=e["target"]["id"];
     try {
       await fetch(
-        "https://jorgealvarez-itc-friendly-space-umbrella-rx5xvq9vp95hw5pj-8000.preview.app.github.dev/api/v1/order/update/"+id,
+        "https://joseph02mr-special-palm-tree-j9qq9gjrw7w3j5x-8000.preview.app.github.dev/api/v1/order/update/"+id,
         {
           method: "PUT",
           crossDomain: true,
